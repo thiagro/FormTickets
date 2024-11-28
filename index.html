@@ -1,237 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Chamados</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-            color: #555;
-        }
-
-        form {
-            background: #fff;
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-            color: #444;
-        }
-
-        input, select, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        input, textarea{
-            width: 96%;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .btn-wpp {
-            background-color: #25d366;
-            color: white;
-        }
-
-        textarea[readonly] {
-            background-color: #f9f9f9;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        #resultado {
-            max-width: 500px;
-            margin: 20px auto;
-            display: block;
-            background-color: #f9f9f9;
-        }
-
-        #copyButton {
-            background-color: #28a745;
-            color: white;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        #copyButton:hover {
-            background-color: #218838;
-        }
-       
-            footer {
-	
-	color: #333;
-	padding: 20px;
-	text-align: center;
-	margin-top: 50px;
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Responsivo</title>
+  <style>
+    /* Resetando margens e preenchimento padrão */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    /* Estilo básico da página */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #f6afaf;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout principal */
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px;
+      padding-top:3%;
+      padding-right: 20%;
+      padding-left: 20%;
     
-
-    footer a:hover {
-        text-decoration: underline;
     }
-    </style>
+
+    /* Estilo das colunas */
+    .coluna {
+      width: 48%; /* Largura das colunas para telas maiores */
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Alinha todo o conteúdo da coluna no centro */
+      justify-content: center; /* Garante que o conteúdo esteja bem posicionado verticalmente */
+    }
+
+    .coluna img {
+      width: 80%; /* Ajusta a largura da imagem */
+      height: auto;
+      margin-bottom: 15px; /* Espaço entre a imagem e o título */
+      border-radius: 80px;
+      width:250px; height:215px;
+    }
+
+    .coluna h2 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .coluna p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Estilos para telas pequenas */
+    @media (max-width: 1000px) {
+      .coluna {
+        width: 100%; /* Colunas ficam em 100% da largura */
+        margin-bottom: 15px;
+      }
+
+      .coluna h2 {
+        font-size: 18px;
+      }
+
+      .coluna p {
+        font-size: 12px;
+      }
+      .coluna img {
+        width:100px;
+        height:auto;
+      }
+
+      nav {
+        font-size: 16px;
+      }
+      
+    }
+  </style>
 </head>
 <body>
-    <h1>
-        <img src="logo.png" alt="Logo" style="width: 60px; height: auto; vertical-align: middle; margin-right: 10px;">
-        Formulário de Chamados</h1>
-    <form id="pedidoForm">
-        <label for="solicitante">Solicitante:</label>
-        <input type="text" id="solicitante" name="solicitante" required autofocus>
-        
-        <label for="setor">Setor:</label>
-        <select id="setor" name="setor" required>
-            <option value="" disabled selected>Selecione o setor</option>
-            <option value="Marina da Glória">Marina da Glória</option>
-            <option value="Marina Verolme">Marina Verolme</option>
-            <option value="Marina Bracuhy JL">Marina Bracuhy JL</option>
-            <option value="Marina Ribeira">Marina Ribeira</option>
-            <option value="Marina Piratas">Marina Piratas</option>
-            <option value="Marina Itacuruçá">Marina Itacuruçá</option>
-            <option value="Marina Refugio Paraty">Marina Refugio Paraty</option>
-            <option value="Marina Boa vista">Marina Boa vista</option>
-            <option value="Marina da Glória">Marina da Glória</option>
-            <option value="Marina Buzios">Marina Buzios</option>            
-            <option value="Engenharia">Engenharia</option>
-            <option value="Mecanica">Mecanica</option>
-            <option value="Almoxarifado">Almoxarifado</option>
-            <option value="Meio Ambiente">Meio Ambiente</option>
-            <option value="Segurança do Trabalho">Segurança do Trabalho</option>
-            <option value="Sala Radio">Sala Radio</option>
-            <option value="Manutenção">Manutenção</option>
-            <option value="Operação">Operação</option>
-            <option value="Nautica">Nautica</option>
-            <option value="Financeiro">Financeiro</option>
-            <option value="Contabilidade">Contabilidade</option>
-            <option value="Planejamento Financeiro">Planejamento Financeiro</option>
-            <option value="Diretoria">Diretoria</option>
-            <option value="Juridico">Jurídico</option>
-            <option value="Compras">Compras</option>
-            <option value="Comercial">Comercial</option>
-            <option value="RH">RH</option>
-            <option value="Secretaria">Secretaria</option>
-            <option value="Novos Negócios">Novos Negócios</option>
-            <option value="Marketing">Marketing</option>
-            <option value="TI">TI</option>
-        </select>
-        
-        <label for="atendente">Atendente:</label>
-        <!-- <input type="text" id="atendente" name="atendente" value="Thiago" readonly> -->
-        <input type="text" id="atendente" name="atendente" >
 
-        
-        <label for="pedido">Pedido:</label>
-        <textarea id="pedido" name="pedido" required></textarea>
-        
-        <button class="btn-wpp" id="sendWpp">📧 Enviar pelo WhatsApp</button>
-        <button type="submit">↓ Gerar Retorno e copiar ↓</button>
-        <div id="toast" style="display:none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px; font-size: 16px;">
-            Copiado e gerado com sucesso!
-        </div>
-        
-    </form>
+  <!-- Navbar -->
+  <nav>
+    <a href="#">Nath's Doceria</a>
+    <a href="#">Cardápio</a>
+  </nav>
+  <h2 style="padding-top:25px; text-align: center; color:#333;">Selecione uma opção</h2>
 
-    <h2>Retorno Gerado:</h2>
-    <!-- <button id="copyButton">Copiar Texto</button> -->
-    <textarea id="resultado" rows="6" cols="50" readonly></textarea>
+  <!-- Main content -->
+  <main>
     
-    <footer>
-        <a>Created by: Thiago Ribeiro</a>
-    </footer>
+    <div class="coluna">
+      <a href="">
+        <img src="bolo.png" alt="Imagem 1" >
+      </a>
+        <h2>Bolo</h2>
+        <p>Descrição breve sobre a imagem 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      
+    </div>
+    
+    <div class="coluna">
+        <a href="">
+      <img src="doce.png" alt="Imagem 2">
+        </a>
+      <h2>Docinhos</h2>
+      <p>Descrição breve sobre a imagem 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </main>
 
-    <script>
-        document.getElementById("pedidoForm").addEventListener("submit", function(event) {
-            //gera a mensagem no final da pagina e rola pra baixo
-            event.preventDefault();
-            const solicitante = document.getElementById("solicitante").value;
-            const setor = document.getElementById("setor").value;
-            const atendente = document.getElementById("atendente").value;
-            const pedido = document.getElementById("pedido").value;
-
-            const resultado = `Solicitante: ${solicitante}\nSetor: ${setor}\nAtendente: ${atendente}\nPedido: ${pedido}`;
-            document.getElementById("resultado").value = resultado;
-              
-            //rola para baixo
-            window.scrollTo({
-                top: document.body.scrollHeight,
-            behavior: 'smooth'
-            });
-
-            //limpa os campos
-            document.getElementById("solicitante").value = "";
-            document.getElementById("setor").value = "";
-            document.getElementById("pedido").value = "";
-
-        });
-
-        // função para copiar texto
-        document.getElementById("pedidoForm").addEventListener("submit", function() {
-            const resultado = document.getElementById("resultado");
-            resultado.select();
-            resultado.setSelectionRange(0, 99999); // Para dispositivos móveis
-            document.execCommand("copy");
-            //aparece msg de sucesso
-            var toast = document.getElementById("toast");
-            toast.style.display = "block";
-            setTimeout(function() {
-                toast.style.display = "none";
-            }, 2000);  
-        });
-
-        // função de envio pelo wpp
-        document.getElementById("sendWpp").addEventListener("click", function() {
-            const mensagem = document.getElementById("resultado").value;
-            if (!mensagem) {
-                alert("Por favor, preencha o formulário e gere o retorno antes de enviar.");
-                return;
-            }
-            const telefone = prompt("Digite o número de telefone com DDD (apenas números):");
-            if (telefone) {
-                const link = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-                window.open(link, "_blank");
-            }
-        });
-    </script>
 </body>
 </html>
